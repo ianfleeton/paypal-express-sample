@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    payment = Payment.create! params[:payment]
+    payment = Payment.create!(payment_params)
     payment.setup!(
       success_payments_url,
       cancel_payments_url
@@ -55,4 +55,7 @@ class PaymentsController < ApplicationController
     redirect_to root_url, error: e.response.details.collect(&:long_message).join('<br />')
   end
 
+  def payment_params
+    params.require(:payment).permit(:amount, :digital, :popup, :recurring)
+  end
 end

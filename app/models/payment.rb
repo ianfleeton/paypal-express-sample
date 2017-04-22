@@ -1,10 +1,9 @@
 class Payment < ActiveRecord::Base
   validates :token, uniqueness: true
   validates :amount, presence: true
-  validates :identifier, uniqueness: true
-  scope :recurring, where(recurring: true)
-  scope :digital,   where(digital: true)
-  scope :popup,     where(popup: true)
+  scope :recurring, -> { where(recurring: true) }
+  scope :digital,   -> { where(digital: true) }
+  scope :popup,     -> { where(popup: true) }
 
   def goods_type
     digital? ? :digital : :real

@@ -1,4 +1,4 @@
-PaypalExpressSample::Application.routes.draw do
+Rails.application.routes.draw do
   resources :payments, only: [:show, :create, :destroy] do
     collection do
       get :success

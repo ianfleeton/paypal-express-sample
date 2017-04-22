@@ -13,7 +13,7 @@ $(function () {
     if (typeof flash == 'string') {
       flash = JSON.parse(flash);
     }
-    $.jGrowl(flash.text, $.extend(flash, options));
+    $.growl(flash.text, $.extend(flash, options));
   };
 
   $.notify = {

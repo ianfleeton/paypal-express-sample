@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8"/>
-  <title><%=t 'title' %></title>
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <%= stylesheet_link_tag 'application' %>
-  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-</head>
-<%= content_tag :body, class: controller_name do %>
-  <%= render 'layouts/header' %>
-  <%= yield %>
-  <%= render 'layouts/footer' %>
-  <%= yield :bottom %>
-<% end %>
+  <head>
+    <title><%= t('title') %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= content_tag :body, class: controller_name do %>
+      <%= render 'layouts/header' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      <%= yield :bottom %>
+    <% end %>
+  </body>
 </html>

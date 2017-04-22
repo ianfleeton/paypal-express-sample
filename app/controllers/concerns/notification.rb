@@ -1,4 +1,6 @@
 module Notification
+  extend ActiveSupport::Concern
+
   def flash_to_cookie
     [:notice, :warn, :error].each do |key|
       if (_flash_ = flash[key]).present?
